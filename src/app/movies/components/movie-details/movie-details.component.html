@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row mt-3">
+       <div class="col-1">
+          <button class="btn btn-light" (click)="backToHomePage()"><i class="bi bi-house-door-fill">Back</i></button>
+       </div>
+       <hr>
+    </div>
+    <div class="col-10">
+       <h1>{{ movie?.title }}</h1>
+    </div>
+    <div class="row mt-3 image-container">
+       <div class="col-md-4 col-12">
+          <img class="img-fluid mx-auto" [src]="movie?.poster" alt="{{ movie?.title }} Poster" />
+       </div>
+       <div class="movie-summary col-md-8">
+          <p><strong>Summary :</strong> {{ movie?.summary }}</p>
+       </div>
+    </div>
+    <br>  <br>
+    <div class="row mt-3">
+       <div class="col-12 text-center">
+          <h3 class="detail_name">Details</h3>
+       </div>
+    </div>
+    <table class="table table-striped">
+       <tbody>
+          <tr>
+             <th scope="row">Box Office</th>
+             <td>{{ movie?.box_office | budget }}</td>
+          </tr>
+          <tr>
+             <th scope="row">Budget</th>
+             <td>{{ movie?.budget | budget }}</td>
+          </tr>
+          <tr>
+             <th scope="row">Duration</th>
+             <td>{{ movie?.duration | duration }}</td>
+          </tr>
+          <tr>
+             <th scope="row">Producers</th>
+             <td>{{ movie?.producers?.join(', ') }}</td>
+          </tr>
+          <tr>
+             <th scope="row">Cinematographers</th>
+             <td>{{ movie?.cinematographers?.join(', ') }}</td>
+          </tr>
+       </tbody>
+    </table>
+ </div>

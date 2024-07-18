@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12 justify-content-center bg-body-tertiary p-2">
+       <div class="text">
+          <h5>Filters</h5>
+       </div>
+       <div class="d-md-flex justify-content-around align-items-center">
+          <div class="input-group input-group-sm mb-3">
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+             </div>
+             <input type="text" [(ngModel)]="titleFilter" (input)="filtersApply()" class="form-control">
+          </div>
+          <div class="input-group input-group-sm mb-3">
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Release Year</span>
+             </div>
+             <input type="text" [(ngModel)]="releaseYearFilter" (input)="filtersApply()" class="form-control">
+          </div>
+       </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center mt-3">
+       <ng-container *ngIf="loading" class="text-center mt-2">
+          <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+             <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+             </div>
+          </div>
+       </ng-container>
+       <ng-container *ngIf="!loading">
+          <ng-container *ngFor="let movie of filteredMovies">
+             <div class="col-lg-12">
+                <app-movie-property [movie]="movie"></app-movie-property>
+             </div>
+          </ng-container>
+       </ng-container>
+    </div>
